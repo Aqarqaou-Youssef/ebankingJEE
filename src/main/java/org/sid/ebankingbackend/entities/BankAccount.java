@@ -16,14 +16,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class BankAccount {
+public  class BankAccount {
     @Id
     private  String id;
     private double balance;
     private Date createdAt;
+    @Enumerated(EnumType.STRING) //pour utiliser les string dans status est pas 0,1...
     private AccountStatus status;
     @ManyToOne
     private Customer customer;
-    @OneToMany(mappedBy = "bankAccount") //forieng key comme referenses
+    @OneToMany(mappedBy = "bankAccount",fetch = FetchType.LAZY) //forieng key comme referenses
     private List<AccountOperation> accountOperations;
 }
