@@ -8,9 +8,7 @@ import org.sid.ebankingbackend.enums.OperationType;
 import javax.persistence.*;
 import java.util.Date;
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 public class AccountOperation {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,4 +18,6 @@ public class AccountOperation {
     private OperationType type;
     @ManyToOne
     private BankAccount bankAccount;
+    private String description;
 }
+

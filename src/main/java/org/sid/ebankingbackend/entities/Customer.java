@@ -1,22 +1,20 @@
 package org.sid.ebankingbackend.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-
 @Entity
-@Data //getters et setters
-@NoArgsConstructor
-@AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 public class Customer {
-@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-    private  String email;
-    @OneToMany(mappedBy = "customer") //comme forieng key dans BankAccount
+    private String email;
+    @OneToMany(mappedBy = "customer")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<BankAccount> bankAccounts;
-
 }
